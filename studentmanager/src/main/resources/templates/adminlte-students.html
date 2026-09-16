@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý sinh viên - AdminLTE</title>
+
+    <!-- AdminLTE4 -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/css/adminlte.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+
+<div class="app-wrapper">
+
+    <!-- HEADER -->
+    <nav class="app-header navbar navbar-expand bg-body">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">
+                Quản lý sinh viên
+            </a>
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <span class="nav-link">
+                        <i class="bi bi-person-circle"></i>
+                        Admin
+                    </span>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar bg-dark shadow"
+           data-bs-theme="dark">
+
+        <div class="sidebar-brand">
+
+            <a href="#" class="brand-link">
+
+                <span class="brand-text fw-light">
+                    Student Manager
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-wrapper">
+
+            <nav class="mt-2">
+
+                <ul class="nav sidebar-menu flex-column"
+                    data-lte-toggle="treeview"
+                    role="menu">
+
+                    <li class="nav-item">
+
+                        <a href="#"
+                           class="nav-link active">
+
+                            <i class="nav-icon bi bi-speedometer"></i>
+
+                            <p>Dashboard</p>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="/admin/students"
+                           class="nav-link active">
+
+                            <i class="nav-icon bi bi-people"></i>
+
+                            <p>Quản lý sinh viên</p>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+
+        <div class="app-content-header">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <h3 class="mb-0">
+                            Quản lý sinh viên
+                        </h3>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <ol class="breadcrumb float-sm-end">
+
+                            <li class="breadcrumb-item">
+                                Home
+                            </li>
+
+                            <li class="breadcrumb-item active">
+                                Students
+                            </li>
+
+                        </ol>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="app-content">
+
+            <div class="container-fluid">
+
+                <!-- FORM THÊM -->
+                <div class="card card-primary mb-4">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">
+                            <i class="bi bi-person-plus"></i>
+                            Thêm sinh viên
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <form id="studentForm">
+
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+
+                                    <label>Mã sinh viên</label>
+
+                                    <input type="text"
+                                           id="studentCode"
+                                           class="form-control"
+                                           required>
+
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+
+                                    <label>Họ và tên</label>
+
+                                    <input type="text"
+                                           id="fullName"
+                                           class="form-control"
+                                           required>
+
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+
+                                    <label>Email</label>
+
+                                    <input type="email"
+                                           id="email"
+                                           class="form-control"
+                                           required>
+
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+
+                                    <label>Số điện thoại</label>
+
+                                    <input type="text"
+                                           id="phone"
+                                           class="form-control">
+
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+
+                                    <label>Tên lớp</label>
+
+                                    <input type="text"
+                                           id="className"
+                                           class="form-control">
+
+                                </div>
+
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+
+                                <i class="bi bi-plus-circle"></i>
+                                Thêm sinh viên
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BẢNG SINH VIÊN -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">
+                            <i class="bi bi-table"></i>
+                            Danh sách sinh viên
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body table-responsive">
+
+                        <table class="table table-bordered table-hover">
+
+                            <thead class="table-primary">
+
+                                <tr>
+
+                                    <th>Mã SV</th>
+                                    <th>Họ tên</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Lớp</th>
+                                    <th>Thao tác</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="studentTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+
+        <strong>
+            Student Manager
+        </strong>
+
+        <div class="float-end d-none d-sm-inline">
+            Quản lý sinh viên
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- JS AdminLTE -->
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0-beta3/dist/js/adminlte.min.js"></script>
+
+
+<script>
+
+    const API_URL = "/api/students";
+
+
+    // HIỂN THỊ DANH SÁCH
+    function loadStudents() {
+
+        fetch(API_URL)
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                const table =
+                    document.getElementById("studentTable");
+
+                table.innerHTML = "";
+
+                data.forEach(student => {
+
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+
+                        <td>${student.studentCode}</td>
+
+                        <td>${student.fullName}</td>
+
+                        <td>${student.email}</td>
+
+                        <td>${student.phone}</td>
+
+                        <td>${student.className}</td>
+
+                        <td>
+
+                            <button class="btn btn-danger btn-sm"
+                                onclick="deleteStudent('${student.id}')">
+
+                                <i class="bi bi-trash"></i>
+                                Xóa
+
+                            </button>
+
+                        </td>
+
+                    `;
+
+                    table.appendChild(row);
+
+                });
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                alert("Không thể tải danh sách sinh viên!");
+
+            });
+
+    }
+
+
+    // THÊM SINH VIÊN
+    document.getElementById("studentForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const student = {
+
+                studentCode:
+                    document.getElementById("studentCode").value,
+
+                fullName:
+                    document.getElementById("fullName").value,
+
+                email:
+                    document.getElementById("email").value,
+
+                phone:
+                    document.getElementById("phone").value,
+
+                className:
+                    document.getElementById("className").value
+
+            };
+
+
+            fetch(API_URL, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(student)
+
+            })
+
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Thêm thất bại");
+                }
+
+                return response.json();
+
+            })
+
+            .then(data => {
+
+                alert("Thêm sinh viên thành công!");
+
+                document.getElementById("studentForm").reset();
+
+                loadStudents();
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                alert("Có lỗi khi thêm sinh viên!");
+
+            });
+
+        });
+
+
+    // XÓA SINH VIÊN
+    function deleteStudent(id) {
+
+        if (!confirm("Bạn có chắc muốn xóa sinh viên này?")) {
+            return;
+        }
+
+        fetch(`${API_URL}/${id}`, {
+
+            method: "DELETE"
+
+        })
+
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Xóa thất bại");
+            }
+
+            alert("Xóa thành công!");
+
+            loadStudents();
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            alert("Có lỗi khi xóa sinh viên!");
+
+        });
+
+    }
+
+
+    // TẢI DANH SÁCH
+    loadStudents();
+
+</script>
+
+</body>
+
+</html>

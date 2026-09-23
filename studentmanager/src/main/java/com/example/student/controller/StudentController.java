@@ -9,6 +9,7 @@ import com.example.student.service.StudentService;
 
 @RestController
 @RequestMapping("/api/students")
+@CrossOrigin(origins = "*")
 public class StudentController {
 
     @Autowired

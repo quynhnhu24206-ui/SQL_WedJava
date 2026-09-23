@@ -1,4 +1,3 @@
-
 package com.example.student.controller;
 
 import org.springframework.stereotype.Controller;
